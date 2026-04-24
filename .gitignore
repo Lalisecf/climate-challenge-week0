@@ -1,0 +1,11 @@
+# Ignore virtual environment
+.venv/
+
+# Ignore environment variables (secrets)
+.env
+
+# Ignore data folders
+data/
+
+# Ignore CSV files
+*.csv
