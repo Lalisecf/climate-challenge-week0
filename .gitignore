@@ -1,11 +1,11 @@
-# Ignore virtual environment
+# Virtual environment
 .venv/
 
-# Ignore environment variables (secrets)
+# Environment variables
 .env
 
-# Ignore data folders
+# Data files (raw + cleaned)
 data/
 
-# Ignore CSV files
-*.csv
+# Jupyter checkpoints
+.ipynb_checkpoints/
