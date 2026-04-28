@@ -21,6 +21,20 @@ Clean and preprocess climate datasets
 Handle missing values and anomalies
 Perform exploratory data analysis (EDA)
 Generate initial insights for each country
+Task 3: Cross-Country Comparison & Vulnerability Analysis
+Combine cleaned datasets from all five countries
+Compare:
+Temperature trends
+Precipitation variability
+Extreme climate events
+Analyze:
+Extreme heat days (T2M_MAX > 35°C)
+Dry days (PRECTOTCORR < 1 mm)
+Statistical differences using ANOVA
+Generate:
+Climate vulnerability ranking
+Cross-country insights
+COP32 policy-oriented conclusions
 Task 4: Interactive Dashboard (Bonus)
 Build a Streamlit dashboard for visualization
 Enable user interaction (filters & selections)
@@ -57,11 +71,19 @@ jupyter notebook
 Open:
 
 notebooks/<country>_eda.ipynb
+notebooks/compare_countries.ipynb
 
 Run all cells to reproduce the analysis.
 
 Run Dashboard (Streamlit)
 streamlit run app/main.py
+
+🌐 Live Dashboard
+
+Deployed on Streamlit Community Cloud:
+
+👉 https://climate-challenge-week0-mh9rane9szqmyb9bdmnsgg.streamlit.app/
+
 Dashboard Features:
 🌍 Multi-country selection
 📅 Year range filter
@@ -113,7 +135,9 @@ Environment and CI pipeline configured
 Data cleaned and standardized
 Missing values and outliers handled
 Exploratory analysis completed for all countries
-Interactive dashboard built
+Cross-country comparison and vulnerability analysis completed
+COP32-oriented insights generated
+Interactive dashboard built and deployed
 
 📌 Notes
 
