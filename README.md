@@ -21,6 +21,10 @@ Clean and preprocess climate datasets
 Handle missing values and anomalies
 Perform exploratory data analysis (EDA)
 Generate initial insights for each country
+Task 4: Interactive Dashboard (Bonus)
+Build a Streamlit dashboard for visualization
+Enable user interaction (filters & selections)
+Present insights in a clear and visual format
 🌐 Dataset
 
 Data is sourced from the
@@ -56,16 +60,30 @@ notebooks/<country>_eda.ipynb
 
 Run all cells to reproduce the analysis.
 
+Run Dashboard (Streamlit)
+streamlit run app/main.py
+Dashboard Features:
+🌍 Multi-country selection
+📅 Year range filter
+🌡 Temperature trend (monthly)
+🌧 Precipitation distribution (boxplot)
+📊 Summary statistics & ANOVA
+🏆 Country ranking
+
+
 🧪 Run Tests
 pytest tests/
 🧹 Code Quality Check
 flake8 src/ tests/
 📁 Project Structure
 ├── .github/workflows/ci.yml   # CI pipeline
-├── src/                       # Utility functions
-├── notebooks/                # EDA notebooks (per country)
-├── tests/                    # Unit tests
-├── scripts/                  # Supporting scripts
+├── app/                      # Streamlit dashboard
+│   ├── main.py
+│   └── utils.py
+├── src/                      # Utility functions
+├── notebooks/               # EDA notebooks
+├── tests/                   # Unit tests
+├── scripts/                 # Supporting scripts
 ├── requirements.txt
 ├── README.md
 🔄 Workflow
@@ -73,6 +91,7 @@ Branching
 main → stable code
 setup-task → environment setup & CI
 eda-<country> → country-specific analysis
+dashboard-dev → Streamlit dashboard
 Commits
 
 Uses Conventional Commits:
@@ -94,6 +113,7 @@ Environment and CI pipeline configured
 Data cleaned and standardized
 Missing values and outliers handled
 Exploratory analysis completed for all countries
+Interactive dashboard built
 
 📌 Notes
 

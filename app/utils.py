@@ -52,6 +52,18 @@ def daily_average(df, metric):
         .reset_index()
     )
 
+def monthly_average(df, metric):
+    if df.empty:
+        return pd.DataFrame()
+
+    df = df.copy()
+    df["Month"] = df["Timestamp"].dt.to_period("M").dt.to_timestamp()
+
+    return (
+        df.groupby(["Month", "Country"])[metric]
+        .mean()
+        .reset_index()
+    )
 
 def summary_table(df, metrics):
     agg = df.groupby("Country")[metrics].agg(["mean", "median", "std"]).round(2)
