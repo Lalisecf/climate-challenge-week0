@@ -8,7 +8,7 @@ curr_dir = os.path.dirname(os.path.abspath(__file__))
 if curr_dir not in sys.path:
     sys.path.insert(0, curr_dir)
 
-from utils import load_data, summary_table, top_regions, run_anova, daily_average, filter_by_year
+from utils import load_data, summary_table, top_regions, run_anova, daily_average,monthly_average, filter_by_year
 
 # Page config
 st.set_page_config(page_title="Climate Dashboard", layout="wide")
@@ -31,8 +31,6 @@ with st.sidebar:
         ["Temperature", "Precipitation", "Humidity"]
     )
 
-st.sidebar.write("Year: 2015")
-year_range = (2015, 2015)
 
 # Guard
 if not selected_countries:
@@ -46,7 +44,18 @@ if df.empty:
     st.error("No data found.")
     st.stop()
 
-# Filter
+# ✅ NOW df exists → safe to use
+min_year = df["Timestamp"].dt.year.min()
+max_year = df["Timestamp"].dt.year.max()
+
+year_range = st.slider(
+    "Select Year Range",
+    min_value=int(min_year),
+    max_value=int(max_year),
+    value=(int(min_year), int(max_year))
+)
+
+# Filter AFTER slider
 df = filter_by_year(df, year_range[0], year_range[1])
 
 # KPIs
@@ -80,16 +89,24 @@ with tab1:
 with tab2:
     st.subheader("Temperature Trend")
 
-    df_temp = daily_average(df, "Temperature")
+    # df_temp = daily_average(df, "Temperature")
+
+    # fig = px.line(
+    #     df_temp,
+    #     x="Timestamp",
+    #     y="Temperature",
+    #     color="Country"
+    # )
+
+    df_temp = monthly_average(df, "Temperature")
 
     fig = px.line(
         df_temp,
-        x="Timestamp",
+        x="Month",
         y="Temperature",
         color="Country"
     )
-
-    st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, use_container_width=True)
 
 # PRECIPITATION BOXPLOT (REQUIRED)
 with tab3:
@@ -106,7 +123,7 @@ with tab3:
 
 # RANKING
 with tab4:
-    st.subheader("Top Regions")
+    st.subheader("Top Countries")
 
     ranking = top_regions(df, selected_metric)
     st.dataframe(ranking)
