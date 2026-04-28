@@ -123,6 +123,10 @@ The following are excluded from the repository:
 data/
 .csv files
 
+## 📸 Dashboard Preview
+
+![Dashboard Screenshot](dashboard_screenshots/dashboard.png)
+
 👩‍💻 Author
 
 Lalise Fufi
